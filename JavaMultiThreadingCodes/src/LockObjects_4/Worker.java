@@ -34,7 +34,7 @@ public class Worker {
     private List<Integer> list2 = new ArrayList<>();
 
     public void stageOne() {
-
+        //lock a method and working with other(list1). it's a good practice
         synchronized (lock1) {
             try {
                 Thread.sleep(1);
@@ -47,6 +47,7 @@ public class Worker {
     }
 
     public void stageTwo() {
+        //lock a method and working with other(list1). it's a good practice
         synchronized (lock2) {
             try {
                 Thread.sleep(1);
