@@ -42,15 +42,17 @@ public class App {
     public static void main(String[] args) {
         /**
          * Created 2 threads, and assign tasks (Processor(i).run) to the threads
+         * Basically what we have here is 2 threads working for us, using this 2 threads we are going
+         * process all jobs. 
          */
-        ExecutorService executor = Executors.newFixedThreadPool(2);//2 Threads
+        ExecutorService executor = Executors.newFixedThreadPool(2);//2 Threads, it means that 2 threads will work simultaneously 
         for (int i = 0; i < 2; i++) { // call the (Processor(i).run) 2 times with 2 threads
-            executor.submit(new Processor(i));
+            executor.submit(new Processor(i)); //queue of jobs that will process in 2 threads 
         }
-        executor.shutdown();
+        executor.shutdown(); // shutdown when finish
         System.out.println("All tasks submitted.");
         try {
-            executor.awaitTermination(1, TimeUnit.DAYS);
+            executor.awaitTermination(1, TimeUnit.DAYS); // limit of time to run the pool
         } catch (InterruptedException ignored) {
         }
         System.out.println("All tasks completed.");
